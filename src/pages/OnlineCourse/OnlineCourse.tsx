@@ -109,7 +109,7 @@ export const OnlineCourse: React.FC = () => {
       </div>
         {showRequisites && (
           <div className='text-left w-max mt-2 mx-auto text-gray-600'>
-            <b>За модуль</b>
+            <p className="bg-yellow-100 p-2 inline-block">За модуль</p>
             <br/>
             {ie.recipient} <CopyButton value={ie.recipient} />
             <br />
@@ -135,7 +135,7 @@ export const OnlineCourse: React.FC = () => {
             <br />А не від ФОП, чи організації
             <br/>
             <br/>
-            <b>За групу практики</b>
+            <p className="bg-yellow-100 p-2 inline-block">За групу практики</p>
             <br/>
             <b>Олег:</b> 5363542102236842 <CopyButton value={'5363542102236842'} />
             <br/>

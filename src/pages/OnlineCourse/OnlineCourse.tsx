@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import { CopyButton } from '../../components/CopyButton';
 import { Schedule } from '../../components/Schedule';
 import { findEuro } from '../../helpers/findEuro';
 import { normalizeCurrency } from '../../helpers/normalizeCurrency';
-import { createSchedule } from '../../helpers/сreateSchedule';
 import useCurrencyData from '../../hooks/useCurrencyData';
 import modules from '../../data/onlineModuleSchedule.json';
 import practices from '../../data/onlinePracticeSchedule.json';
 import retreats from '../../data/onlineRetreatSchedule.json';
-import ie from '../../data/individualEntrepreneur.json';
+import Requisites from '../../components/Requisites/Requisites';
+import CurrencyData from '../../components/CurrencyData/CurrencyData';
 
 export const OnlineCourse: React.FC = () => {
   const { currencies, loading, error } = useCurrencyData();
@@ -34,7 +33,7 @@ export const OnlineCourse: React.FC = () => {
   if (loading) {
     return <div className='text-center'>Завантаження даних...</div>;
   }
-  console.log(['error:', error])
+  
   if (error !== null) {
     return (
       <div exchange-container>
@@ -54,38 +53,22 @@ export const OnlineCourse: React.FC = () => {
   const euroRate = findEuro(currencies);
 
   if (euroRate) {
-    console.log(['test', euroRate]);
     normalizeCurrency(euroRate);
-  }
 
-  const nextGropuDate = new Date(createSchedule(modules, practices,retreats).filter(group => group.type === 'module')[0].startDate);
-  const nextGrupDateToPrint = `${nextGropuDate.getDate().toString().padStart(2, '0')}.${(nextGropuDate.getMonth() + 1).toString().padStart(2, '0')}`
-
-  return (
-    <>
-      <div className='mb-2 bg-slate-800 text-white flex justify-center items-center'>
-        <table className='border-separate border-spacing-x-2'>
-          <tbody>
-            <tr>
-              <td></td>
-              <td className='text-gray-400'>Sell</td>
-            </tr>
-            <tr>
-              <td>EUR</td>
-              <td>{euroRate?.rateSell}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className='text-center mb-2'>
-          <span className='mb-2 block'>
+    return (
+      <>
+        <div className='mb-2 bg-slate-800 text-white flex justify-center items-center'>
+          <CurrencyData euroData={euroRate} />
+        </div>
+        <div className='text-center mb-2'>
+          <div className='mb-2'>
             <b>Модуль:</b>
             <br />
             €150 = {Math.round(150 * euroRate!.rateSell)} грн
-          </span>
-          <span className='mb-2 block'>
+          </div>
+          <div className='mb-2'>
             <b>Група практики:</b> 600 грн 
-          </span>
+          </div>
           <div className='mb-2'>
             <button
               onClick={handleRequisitesClick}
@@ -106,69 +89,16 @@ export const OnlineCourse: React.FC = () => {
             </button>
           </div>
 
-      </div>
-        {showRequisites && (
-          <div className='text-left w-max mt-2 mx-auto text-gray-600'>
-            <p className="bg-yellow-100 p-2 inline-block">За модуль</p>
-            <br/>
-            {ie.recipient} <CopyButton value={ie.recipient} />
-            <br />
-            IBAN: {ie.iban} <CopyButton value={ie.iban} />
-            <br />
-            ІПН/ЄДРПОУ: {ie.id} <CopyButton value={ie.id} />
-            <br />
-            Акціонерне товариство: {ie.bank} <CopyButton value={ie.bank} />
-            <br />
-            МФО: {ie.mfo} <CopyButton value={ie.mfo} />
-            <br />
-            ОКПО Банку: {ie.okpo} <CopyButton value={ie.okpo} />
-            <br />
-            <br />
-            🔸Призначення платежу:
-            <br />
-            {`"За навчання ${nextGrupDateToPrint}"`} <CopyButton value={`За навчання ${nextGrupDateToPrint}`} /> 
-            <br />
-            <br />
-            🔥Важливо вказати призначення платежу
-            <br />
-            🔥Важливо, щоб платіж був від фізособи.
-            <br />А не від ФОП, чи організації
-            <br/>
-            <br/>
-            <p className="bg-yellow-100 p-2 inline-block">За групу практики</p>
-            <br/>
-            <b>Олег:</b> 5363542102236842 <CopyButton value={'5363542102236842'} />
-            <br/>
-            <b>Марія:</b>
-            <br/>
-            ФОП РУДЬ МАРІЯ МИКОЛАЇВНА <CopyButton value={'ФОП РУДЬ МАРІЯ МИКОЛАЇВНА'} />
-            <br />
-            IBAN: UA073052990000026003025005897 <CopyButton value={'UA073052990000026003025005897'} />
-            <br />
-            ІПН/ЄДРПОУ: 3236319307 <CopyButton value={'3236319307'} />
-            <br />
-            МФО: 305299 <CopyButton value={'305299'} />
-            <br />
-            Рахунок отримувача: 26003025005897 <CopyButton value={'26003025005897'} />
-            <br />
-            🔸Призначення платежу:
-            <br />
-            {`"За консультаційні послуги"`} <CopyButton value={`За консультаційній послуги`} /> 
-            <br/>
-
-          </div>
-        )}
-      
-      {showSchedule && (<div className='flex justify-center items-center'>
-      <div className='w-[350px] text-gray-600'>
-        <Schedule 
-          modules={modules}
-          practices={practices}
-          retreats={retreats}
-        />
-      </div>
-      </div>)}
-      
-    </>
-  );
+        </div>
+        {showRequisites && <Requisites />}
+        
+        {showSchedule && (
+          <Schedule 
+            modules={modules}
+            practices={practices}
+            retreats={retreats}
+          />)}
+      </>
+    )
+  }
 }

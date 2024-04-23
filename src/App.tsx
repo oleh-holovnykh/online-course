@@ -15,7 +15,7 @@ function App() {
   
   const { currencies, loading, error } = useCurrencyData();
   const [showRequisites, setShowRequisites] = useState<boolean>(false);
-  const [showSchedule, setShowSchedule] = useState<boolean>(true);
+  const [showSchedule, setShowSchedule] = useState<boolean>(false);
 
   const handleRequisitesClick = () => {
     setShowRequisites(!showRequisites);

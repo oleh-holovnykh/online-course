@@ -1,6 +1,6 @@
 import React from 'react'
 import { CopyButton } from '../CopyButton';
-import ie from '../../data/individualEntrepreneur.json';
+import ie from '../../data/VladIE.json';
 import { createSchedule } from '../../helpers/сreateSchedule';
 import modules from '../../data/onlineModuleSchedule.json';
 import practices from '../../data/onlinePracticeSchedule.json';

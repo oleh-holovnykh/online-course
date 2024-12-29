@@ -14,11 +14,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Schedule 
-            modules={modules}
-            practices={practices}
-            retreats={retreats}
-            />} />
+          <Route index element={<Requisites/>} />
           <Route path="payment" element={<Requisites/>} />
           <Route path="schedule" element={
             <Schedule 

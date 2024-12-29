@@ -70,9 +70,6 @@ function App() {
             €150 = {Math.round(150 * euroRate!.rateSell)} грн
           </div>
           <div className='mb-2'>
-            <b>Група практики:</b> 600 грн 
-          </div>
-          <div className='mb-2'>
 
           <NavLink to="/payment" className={getLinkClass}>
             <button

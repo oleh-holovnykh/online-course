@@ -1,15 +1,15 @@
 import React from 'react'
 import { CopyButton } from '../CopyButton';
 import ie from '../../data/individualEntrepreneur.json';
-import { createSchedule } from '../../helpers/сreateSchedule';
-import modules from '../../data/onlineModuleSchedule.json';
-import practices from '../../data/onlinePracticeSchedule.json';
-import retreats from '../../data/onlineRetreatSchedule.json';
+// import { createSchedule } from '../../helpers/сreateSchedule';
+// import modules from '../../data/onlineModuleSchedule.json';
+// import practices from '../../data/onlinePracticeSchedule.json';
+// import retreats from '../../data/onlineRetreatSchedule.json';
 
 const Requisites: React.FC = () => {
 
-  const nextGropuDate = new Date(createSchedule(modules, practices,retreats).filter(group => group.type === 'module')[0].startDate);
-  const nextGrupDateToPrint = `${nextGropuDate.getDate().toString().padStart(2, '0')}.${(nextGropuDate.getMonth() + 1).toString().padStart(2, '0')}`
+  // const nextGropuDate = new Date(createSchedule(modules, practices,retreats).filter(group => group.type === 'module')[0].startDate);
+  // const nextGrupDateToPrint = `${nextGropuDate.getDate().toString().padStart(2, '0')}.${(nextGropuDate.getMonth() + 1).toString().padStart(2, '0')}`
 
   return (
     <div className='text-left w-max mt-2 mx-auto text-gray-600'>
@@ -30,7 +30,7 @@ const Requisites: React.FC = () => {
     <br />
     🔸Призначення платежу:
     <br />
-    {`"За навчання ${nextGrupDateToPrint}"`} <CopyButton value={`За навчання ${nextGrupDateToPrint}`} /> 
+    {`"За навчання 26-28.01.25"`} <CopyButton value={`За навчання 26-28.01.25`} /> 
     <br />
     <br />
     🔥Важливо вказати призначення платежу
@@ -39,9 +39,6 @@ const Requisites: React.FC = () => {
     <br />А не від ФОП, чи організації
     <br/>
     <br/>
-    <p className="bg-yellow-100 p-2 inline-block">За групу практики</p>
-    <br/>
-    5363 5421 0223 6842 <CopyButton value={'5363542102236842'} />
   </div>
   )
 }

@@ -46,7 +46,7 @@
             
             return <div key={i} className='whitespace-normal'>
               <b>{`${dateStr}`}</b>
-              {'module' in group && ` Модуль ${group.module} `}
+              {'module' in group}
               {'module' in group && <br/>}
               {groupTitle}
               {('class' in group && group.class % 2 === 0 || group.type === 'retreat') && <><br />{'\u00a0'}</>}

@@ -14,6 +14,8 @@ const Requisites: React.FC = () => {
   return (
     <div className='text-left w-max mt-2 mx-auto text-gray-600'>
     <br />
+    ЗВЕРНІТЬ УВАГУ, ВАЖЛИВО:
+    <br />
     🔥ПРАВИЛЬНО ВКАЗАТИ ПРИЗНАЧЕННЯ ПЛАТЕЖУ
     <br />
     🔥ПЕРЕКАЗ ЛИШЕ З КАРТКИ ПРИВАТНОЇ ОСОБИ, НЕ ВІД ФОП АБО ОРГАНІЗАЦІЇ

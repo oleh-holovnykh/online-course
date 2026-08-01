@@ -1,37 +1,37 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import { findEuro } from './helpers/findEuro';
 import { normalizeCurrency } from './helpers/normalizeCurrency';
 import useCurrencyData from './hooks/useCurrencyData';
 import CurrencyData from './components/CurrencyData/CurrencyData';
-import classNames from 'classnames';
-import { NavLink, Outlet } from 'react-router-dom';
+// import classNames from 'classnames';
+import { Outlet } from 'react-router-dom';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  classNames('navbar-item', {
-    'is-active': isActive,
-  });
+// const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+//   classNames('navbar-item', {
+//     'is-active': isActive,
+//   });
 
 function App() {
   
   const { currencies, loading, error } = useCurrencyData();
-  const [showRequisites, setShowRequisites] = useState<boolean>(false);
-  const [showSchedule, setShowSchedule] = useState<boolean>(false);
+  // const [showRequisites, setShowRequisites] = useState<boolean>(false);
+  // const [showSchedule, setShowSchedule] = useState<boolean>(false);
 
-  const handleRequisitesClick = () => {
-    setShowRequisites(!showRequisites);
+  // const handleRequisitesClick = () => {
+  //   setShowRequisites(!showRequisites);
 
-    if (showSchedule) {
-      setShowSchedule(!showSchedule);
-    }
-  };
+  //   if (showSchedule) {
+  //     setShowSchedule(!showSchedule);
+  //   }
+  // };
 
-  const handleScheduleClick = () => {
-    setShowSchedule(!showSchedule);
+  // const handleScheduleClick = () => {
+  //   setShowSchedule(!showSchedule);
 
-    if (showRequisites) {
-      setShowRequisites(!showRequisites);
-    }
-  };
+  //   if (showRequisites) {
+  //     setShowRequisites(!showRequisites);
+  //   }
+  // };
 
   if (loading) {
     return <div className='text-center'>Завантаження даних...</div>;
@@ -71,7 +71,7 @@ function App() {
           </div>
           <div className='mb-2'>
 
-          <NavLink to="/payment" className={getLinkClass}>
+          {/* <NavLink to="/payment" className={getLinkClass}>
             <button
                 onClick={handleRequisitesClick}
                 className={`mr-2 text-sm text-gray-800 py-2 px-4 border border-gray-200 rounded ${
@@ -91,7 +91,7 @@ function App() {
               >
                 Розклад
             </button>
-          </NavLink>
+          </NavLink> */}
         </div>
         </div>
         <Outlet />
